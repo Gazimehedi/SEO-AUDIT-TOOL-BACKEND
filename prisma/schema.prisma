@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(cuid())
+  email             String    @unique
+  password          String
+  name              String?
+  avatarUrl         String?
+  bio               String?
+  role              String    @default("user") // user | admin
+  notifyOnScoreDrop Boolean   @default(true)
+  notifyWeekly      Boolean   @default(true)
+  reportLogoUrl     String?
+  twoFactorSecret   String?
+  twoFactorEnabled  Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+  audits            Audit[]
+  apiKeys           ApiKey[]
+  monitoredSites    MonitoredSite[]
+  projects          Project[]
+}
+
+model ApiKey {
+  id        String   @id @default(cuid())
+  label     String
+  token     String   @unique // BCRYPT hashed
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  lastUsed  DateTime?
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id             String          @id @default(cuid())
+  name           String
+  description    String?
+  userId         String
+  user           User            @relation(fields: [userId], references: [id])
+  audits         Audit[]
+  monitoredSites MonitoredSite[]
+  createdAt      DateTime        @default(now())
+}
+
+model Audit {
+  id          String   @id @default(cuid())
+  url         String
+  status      String   // pending | running | complete | failed
+  score       Int?
+  results     Json?    // full audit JSON
+  aiSummary   Json?    // Groq AI insights
+  createdAt   DateTime @default(now())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id])
+  projectId   String?
+  project     Project? @relation(fields: [projectId], references: [id])
+}
+
+model MonitoredSite {
+  id             String    @id @default(cuid())
+  url            String
+  interval       String    @default("weekly") // daily | weekly
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  projectId      String?
+  project        Project?  @relation(fields: [projectId], references: [id])
+  lastAuditedAt  DateTime?
+  lastScore      Int?
+  previousScore  Int?
+  createdAt      DateTime  @default(now())
+}
