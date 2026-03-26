@@ -34,8 +34,10 @@ app.use(cors({
         }
 
         // Allow production domain
-        const frontendUrl = process.env.FRONTEND_URL;
-        if (frontendUrl && (origin === frontendUrl || origin.startsWith(frontendUrl.replace(/\/$/, '')))) {
+        const frontendUrl = process.env.FRONTEND_URL?.replace(/\/$/, '').toLowerCase().trim();
+        const normalizeOrigin = origin.replace(/\/$/, '').toLowerCase().trim();
+        
+        if (frontendUrl && normalizeOrigin === frontendUrl) {
             return callback(null, true);
         }
 
