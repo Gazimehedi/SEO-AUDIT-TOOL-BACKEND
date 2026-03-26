@@ -136,7 +136,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         baseUrlObj = new URL(startUrl);
     } catch {
         await updateJobStatus(jobId, { status: 'failed', error: 'Invalid start URL' });
-        io.emit(`job-${jobId}-failed`, { error: 'Invalid URL' });
+        io.to(jobId).emit(`job-${jobId}-failed`, { error: 'Invalid URL' });
         return;
     }
 
@@ -164,7 +164,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
     };
 
     try {
-        io.emit(`job-${jobId}-step`, { step: 'initializing' });
+        io.to(jobId).emit(`job-${jobId}-step`, { step: 'initializing' });
         const browser = await puppeteer.launch({
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -194,8 +194,8 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                     total: Math.min(visited.size + priorityQueue.length, MAX_PAGES),
                 },
             });
-            io.emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Crawling ${normCurrent}` });
-            io.emit(`job-${jobId}-step`, { step: 'crawling' });
+            io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Crawling ${normCurrent}` });
+            io.to(jobId).emit(`job-${jobId}-step`, { step: 'crawling' });
 
 
             try {
@@ -218,8 +218,8 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
 
                 // Domain-level audits only on the homepage (first page)
                 if (pagesCrawled === 1) {
-                    io.emit(`job-${jobId}-step`, { step: 'analyzing-performance' });
-                    io.emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Domain-level Technical & Security checks...` });
+                    io.to(jobId).emit(`job-${jobId}-step`, { step: 'analyzing-performance' });
+                    io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Domain-level Technical & Security checks...` });
 
                     const techIssues = await checkTechnicalSeo(startUrl);
                     const securityIssues = await checkSecurityHeaders(startUrl);
@@ -227,7 +227,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                     securityIssues.forEach(i => i.location = `Domain (${baseHostname})`);
                     allIssues.push(...techIssues, ...securityIssues);
 
-                    io.emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Performance audit on ${normCurrent}` });
+                    io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Performance audit on ${normCurrent}` });
                     const perfResults = await runPerformanceAudit(currentUrl);
                     performanceScore = perfResults.performanceScore;
                     perfResults.issues.forEach(i => i.location = `Homepage (${normCurrent})`);
@@ -292,7 +292,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         }
 
         await browser.close();
-        io.emit(`job-${jobId}-step`, { step: 'finalizing' });
+        io.to(jobId).emit(`job-${jobId}-step`, { step: 'finalizing' });
 
         // Scoring
 
@@ -339,7 +339,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                             competitors
                         }
                     });
-                    io.emit(`job-${parentJobId}-progress`, { text: `Competitor ${new URL(startUrl).hostname} audit complete!` });
+                    io.to(jobId).emit(`job-${parentJobId}-progress`, { text: `Competitor ${new URL(startUrl).hostname} audit complete!` });
                 }
             }
         }
@@ -362,7 +362,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                         const drop = oldScore - finalScore;
                         console.log(`[Monitoring] Score drop detected for ${site.url}: ${oldScore} -> ${finalScore} (-${drop})`);
                         // In a real app, send email/push here.
-                        io.emit(`site-${monitoredSiteId}-drop`, { url: site.url, oldScore, newScore: finalScore, drop });
+                        io.to(jobId).emit(`site-${monitoredSiteId}-drop`, { url: site.url, oldScore, newScore: finalScore, drop });
                     }
                 }
             } catch (err) {
@@ -372,12 +372,12 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
 
         await persistAudit(jobId);
 
-        io.emit(`job-${jobId}-complete`, { score: finalScore, results: finalResults });
+        io.to(jobId).emit(`job-${jobId}-complete`, { score: finalScore, results: finalResults });
 
     } catch (error: any) {
         console.error(`Fatal audit error for ${startUrl}:`, error);
         await updateJobStatus(jobId, { status: 'failed', error: error.message || 'Failed to crawl.' });
-        io.emit(`job-${jobId}-failed`, { error: error.message });
+        io.to(jobId).emit(`job-${jobId}-failed`, { error: error.message });
     }
 };
 

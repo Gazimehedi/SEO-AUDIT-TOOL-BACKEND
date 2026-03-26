@@ -35,7 +35,12 @@ projectsRouter.post('/', authMiddleware, async (req: AuthRequest, res) => {
 
     try {
         const project = await prisma.project.create({
-            data: { name, description, userId }
+            data: { name, description, userId },
+            include: {
+                _count: {
+                    select: { audits: true, monitoredSites: true }
+                }
+            }
         });
         return res.status(201).json(project);
     } catch (err) {
@@ -108,7 +113,12 @@ projectsRouter.patch('/:id', authMiddleware, async (req: AuthRequest, res) => {
 
         const updated = await prisma.project.update({
             where: { id },
-            data: { name, description }
+            data: { name, description },
+            include: {
+                _count: {
+                    select: { audits: true, monitoredSites: true }
+                }
+            }
         });
         return res.json(updated);
     } catch (err) {

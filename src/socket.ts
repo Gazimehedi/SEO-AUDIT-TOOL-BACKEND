@@ -12,6 +12,12 @@ export const initSocket = (httpServer: HttpServer) => {
 
     io.on('connection', (socket) => {
         console.log(`Socket connected: ${socket.id}`);
+        
+        socket.on('join-job', (jobId) => {
+            socket.join(jobId);
+            // console.log(`Socket ${socket.id} joined room: ${jobId}`);
+        });
+
         socket.on('disconnect', () => {
             console.log(`Socket disconnected: ${socket.id}`);
         });
