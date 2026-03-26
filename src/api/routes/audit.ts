@@ -79,10 +79,12 @@ auditRouter.get('/:jobId/pdf', optionalAuthMiddleware, async (req: AuthRequest, 
             return res.status(403).json({ error: 'Unauthorized to view this report' });
         }
 
-        const browser = await puppeteer.launch({ 
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        });
+        const browser = process.env.BROWSER_WS_ENDPOINT 
+            ? await puppeteer.connect({ browserWSEndpoint: process.env.BROWSER_WS_ENDPOINT })
+            : await puppeteer.launch({ 
+                headless: true,
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+            });
         const page = await browser.newPage();
         
         const reportUrl = type === 'advanced' 

@@ -1,5 +1,13 @@
 # Backend Deployment Guide (SEO Tool)
 
+> **Pro-Tip**: If you see an "Internal Server Error" on your URL, create a `.htaccess` file in your `public_html/` folder with this content to proxy traffic to the backend:
+> ```apache
+> DirectoryIndex disabled
+> RewriteEngine On
+> RewriteRule ^$ http://127.0.0.1:5000/ [P,L]
+> RewriteRule ^(.*)$ http://127.0.0.1:5000/$1 [P,L]
+> ```
+
 The backend is a Node.js Express application that requires a MySQL database and a Redis instance for its queue-based audit engine.
 
 ## Environment Variables (.env)
@@ -33,11 +41,18 @@ JWT_SECRET="a_secure_random_string"
    npm run build
    ```
 
-4. **Run with PM2**:
+4. **Install PM2 & Run**:
+   If `pm2` is not installed, install it globally:
    ```bash
-   pm2 start ecosystem.config.js
-   pm2 save
+   npm install -g pm2
    ```
+   
+   Start the backend:
+   ```bash
+   npx pm2 start ecosystem.config.js
+   npx pm2 save
+   ```
+   *Note: If `pm2` command still fails after installation, use `npx pm2` to bypass PATH issues.*
 
 ## Requirements
 * **Node.js**: 18.x or higher
