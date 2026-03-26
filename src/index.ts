@@ -32,6 +32,13 @@ app.use(cors({
         if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) {
             return callback(null, true);
         }
+        
+        // Allow production domain
+        const frontendUrl = process.env.FRONTEND_URL;
+        if (frontendUrl && (origin === frontendUrl || origin.startsWith(frontendUrl.replace(/\/$/, '')))) {
+            return callback(null, true);
+        }
+        
         return callback(new Error(`CORS: origin ${origin} not allowed`));
     },
     credentials: true,
