@@ -62,6 +62,8 @@ const AUTH_PATH_PATTERNS = [
     /\/forgot-password/i,
     /\/reset-password/i,
     /\/verify-email/i,
+    /\/login/i,
+    /\/register/i,
     /\/api\//i,
     
     // Application-specific authenticated actions
