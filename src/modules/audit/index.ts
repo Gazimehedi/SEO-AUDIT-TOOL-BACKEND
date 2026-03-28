@@ -203,21 +203,68 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
 
             try {
                 const page = await browser.newPage();
-                // Set a realistic User Agent to avoid being blocked as a bot
+                
+                // Advanced Stealth: Set a standard desktop viewport
+                await page.setViewport({ width: 1920, height: 1080 });
+
+                // Advanced Stealth: Remove the "automation" flag to avoid detection
+                await page.evaluateOnNewDocument(() => {
+                    Object.defineProperty(navigator, 'webdriver', { get: () => false });
+                });
+
+                // Set a realistic User Agent
                 await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
                 
+                // Human-like headers
+                await page.setExtraHTTPHeaders({
+                    'Accept-Language': 'en-US,en;q=0.9',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                    'sec-ch-ua': '"Chromium";v="122", "Not(A:Brand";v="24", "Google Chrome";v="122"',
+                    'sec-ch-ua-mobile': '?0',
+                    'sec-ch-ua-platform': '"Windows"',
+                });
+
+                // Randomized "Human" Delay before every page load to avoid bot frequency triggers
+                const initialDelay = Math.floor(Math.random() * 2000) + 1500;
+                await new Promise(r => setTimeout(r, initialDelay));
+
                 // Increased timeout and added 'load' to waitUntil for better reliability
-                await page.goto(currentUrl, { waitUntil: ['networkidle2', 'load'], timeout: 35000 });
+                let loadSuccessful = false;
+                let retryCount = 0;
+                const maxRetries = 2;
+
+                while (!loadSuccessful && retryCount <= maxRetries) {
+                    try {
+                        await page.goto(currentUrl, { waitUntil: ['networkidle2', 'load'], timeout: 45000 });
+                        
+                        // Small human-like scroll to trigger lazy-loaded meta tags
+                        await page.evaluate(() => window.scrollBy(0, 500));
+                        await new Promise(r => setTimeout(r, 500));
+
+                        const currentTitle = await page.title();
+                        
+                        // If we see the Cloudflare wall, wait longer and retry
+                        if (currentTitle.includes('Just a moment...') || currentTitle.includes('Attention Required!')) {
+                            console.warn(`[Crawler] Blocked by Cloudflare on ${currentUrl}. Retrying (${retryCount + 1}/${maxRetries})...`);
+                            await new Promise(r => setTimeout(r, 5000 + (retryCount * 5000))); // Wait 5s, then 10s
+                            retryCount++;
+                        } else {
+                            loadSuccessful = true;
+                        }
+                    } catch (err) {
+                        retryCount++;
+                        if (retryCount > maxRetries) throw err;
+                    }
+                }
+
                 const html = await page.content();
                 const $ = cheerio.load(html);
-
                 const pageTitle = $('title').text() || 'No Title';
-                console.log(`[Crawler] Auditing: ${currentUrl} | Title: ${pageTitle}`);
                 
                 // Add title to debug log for verification
                 try {
                     const logPath = 'audit_issues_debug.log';
-                    fs.appendFileSync(logPath, `\n\n[DEBUG] URL: ${currentUrl}\n[DEBUG] RECEIVED TITLE: ${pageTitle}\n[DEBUG] HTML SNIPPET: ${html.substring(0, 1000).replace(/\n/g, ' ')}\n`);
+                    fs.appendFileSync(logPath, `\n\n[DEBUG] URL: ${currentUrl}\n[DEBUG] RECEIVED TITLE: ${pageTitle}\n[DEBUG] HTML SNIPPET: ${html.substring(0, 500).replace(/\n/g, ' ')}\n`);
                 } catch {}
 
                 // Analysis modules

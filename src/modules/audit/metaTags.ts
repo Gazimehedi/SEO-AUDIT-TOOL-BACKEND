@@ -6,6 +6,8 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     // Helper for case-insensitive meta attributes (Robust alternative to [attr="val" i])
     const getMeta = (nameOrProperty: string) => {
         let content = '';
+        
+        // 1. Try Cheerio first (standard)
         $('meta').each((_, el) => {
             const attrName = $(el).attr('name') || '';
             const attrProp = $(el).attr('property') || '';
@@ -15,6 +17,21 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
                 return false; // break
             }
         });
+
+        // 2. Regex Fallback (If Cheerio missed it or HTML is slightly malformed)
+        if (!content) {
+            const regex = new RegExp(`<meta[^>]*?(?:name|property)=["']${nameOrProperty}["'][^>]*?content=["']([^"']*)["']`, 'i');
+            const match = html.match(regex);
+            if (match && match[1]) {
+                content = match[1];
+            } else {
+                // Try reverse order: content before name/property
+                const regexRev = new RegExp(`<meta[^>]*?content=["']([^"']*)["'][^>]*?(?:name|property)=["']${nameOrProperty}["']`, 'i');
+                const matchRev = html.match(regexRev);
+                if (matchRev && matchRev[1]) content = matchRev[1];
+            }
+        }
+
         return content;
     };
 
