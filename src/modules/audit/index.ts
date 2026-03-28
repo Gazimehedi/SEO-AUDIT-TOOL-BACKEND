@@ -209,8 +209,16 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                 // Increased timeout and added 'load' to waitUntil for better reliability
                 await page.goto(currentUrl, { waitUntil: ['networkidle2', 'load'], timeout: 35000 });
                 const html = await page.content();
-
                 const $ = cheerio.load(html);
+
+                const pageTitle = $('title').text() || 'No Title';
+                console.log(`[Crawler] Auditing: ${currentUrl} | Title: ${pageTitle}`);
+                
+                // Add title to debug log for verification
+                try {
+                    const logPath = 'audit_issues_debug.log';
+                    fs.appendFileSync(logPath, `\n\n[DEBUG] URL: ${currentUrl}\n[DEBUG] RECEIVED TITLE: ${pageTitle}\n[DEBUG] HTML SNIPPET: ${html.substring(0, 1000).replace(/\n/g, ' ')}\n`);
+                } catch {}
 
                 // Analysis modules
                 const metaResults = checkMetaTags($, html);
