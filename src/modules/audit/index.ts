@@ -271,6 +271,7 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                 allIssues.push(...pageIssues);
 
                 // Discover and enqueue internal links
+                const newLinks: string[] = [];
                 $('a').each((_, el) => {
                     const href = $(el).attr('href');
                     if (!href) return;
@@ -283,10 +284,13 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                             absUrl.hostname === baseHostname &&
                             !absUrl.href.match(/\.(png|jpg|jpeg|gif|webp|css|js|pdf|svg|ico|woff|woff2|ttf|eot)(\?|$)/i)
                         ) {
-                            enqueue(absUrl.href);
+                            newLinks.push(absUrl.href);
                         }
                     } catch { /* ignore malformed hrefs */ }
                 });
+
+                // Sort discovered links to ensure a consistent crawl path regardless of finding order
+                newLinks.sort().forEach(link => enqueue(link));
 
             } catch (pageErr) {
                 console.error(`Failed crawling ${currentUrl}:`, pageErr);
@@ -296,19 +300,35 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         await browser.close();
         io.to(jobId).emit(`job-${jobId}-step`, { step: 'finalizing' });
 
-        // Scoring
-
+        // Scoring (VER 2.2 - DEDUPLICATED)
+        // We only penalize each UNIQUE issue type + location once to ensure consistency
+        // regardless of how many pages are crawled.
+        
         let finalScore = 100;
-        const criticals = allIssues.filter(i => i.severity === 'Critical').length;
-        const warnings = allIssues.filter(i => i.severity === 'Warning').length;
+        const uniqueIssuesMap = new Map();
+        
+        allIssues.forEach(issue => {
+            // Unique key: category + issue name + location (e.g. "head > title")
+            // We EXCLUDE pageUrl from the key so that a header issue appearing on 15 pages only counts once.
+            const key = `${issue.category}|${issue.issue}|${issue.location}`;
+            if (!uniqueIssuesMap.has(key)) {
+                uniqueIssuesMap.set(key, issue);
+            }
+        });
+
+        const uniqueIssues = Array.from(uniqueIssuesMap.values());
+        const criticals = uniqueIssues.filter(i => i.severity === 'Critical').length;
+        const warnings = uniqueIssues.filter(i => i.severity === 'Warning').length;
+        
         finalScore -= criticals * 5;
         finalScore -= warnings * 1;
         finalScore = Math.max(0, finalScore);
 
-        // DEBUG LOGGING (VER 2.1 - MANUAL SEARCH)
+        // DEBUG LOGGING (VER 2.3 - DEDUPLICATED SCORE)
         const logPath = '/media/WEBDEV/SEO-TOOL-PROJECT/backend/audit_issues_debug.log';
-        fs.appendFileSync(logPath, `\n\n--- Job ${jobId} (Score: ${finalScore}) [VER 2.1] ---\n`);
-        fs.appendFileSync(logPath, `Criticals: ${criticals}, Warnings: ${warnings}\n`);
+        fs.appendFileSync(logPath, `\n\n--- Job ${jobId} (Score: ${finalScore}) [VER 2.3] ---\n`);
+        fs.appendFileSync(logPath, `Total Issues: ${allIssues.length}, Unique Issues: ${uniqueIssues.length}\n`);
+        fs.appendFileSync(logPath, `Criticals (Unique): ${criticals}, Warnings (Unique): ${warnings}\n`);
         fs.appendFileSync(logPath, JSON.stringify(allIssues, null, 2));
 
         const status = await getJobStatus(jobId);

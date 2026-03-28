@@ -43,17 +43,34 @@ export const checkBrokenLinks = async (baseUrl: string, $: import('cheerio').Che
     const linksToCheck = links.slice(0, 30); // Increased from 15 for better coverage
 
     for (const link of linksToCheck) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000); // 10s per link
+
         try {
             // Check for broken links and redirect chains
             // Using Node 18+ native fetch. We set redirect: 'manual' to catch 301/302s.
-            let response = await fetch(link.href, { method: 'HEAD', redirect: 'manual' }).catch(() => null);
+            let response = await fetch(link.href, { 
+                method: 'HEAD', 
+                redirect: 'manual', 
+                signal: controller.signal,
+                headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36' }
+            }).catch(() => null);
 
-            // Fallback to GET if HEAD is forbidden or not allowed (many servers block it)
-            if (response && [403, 405, 500, 501].includes(response.status)) {
-                response = await fetch(link.href, { method: 'GET', redirect: 'manual' }).catch(() => null);
+            // Fallback to GET if HEAD is forbidden or not allowed
+            if (!response || [403, 404, 405, 500, 501].includes(response.status)) {
+                const getController = new AbortController();
+                const timeoutGet = setTimeout(() => getController.abort(), 10000);
+                response = await fetch(link.href, { 
+                    method: 'GET', 
+                    redirect: 'manual', 
+                    signal: getController.signal,
+                    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36' }
+                }).catch(() => null);
+                clearTimeout(timeoutGet);
             }
 
             const statusCode = response ? response.status : 0;
+            clearTimeout(timeout);
 
             if (statusCode >= 300 && statusCode < 400) {
                 const redirectUrl = response?.headers.get('location');
