@@ -6,12 +6,12 @@ import { checkBrokenLinks } from './brokenLinks';
 import { checkStructuredData } from './structuredData';
 import { checkContentQuality } from './contentQuality';
 import { checkTechnicalSeo } from './technicalSeo';
-import { checkSecurityHeaders } from './securityHeaders';
 import { extractKeywords } from './keywords';
 import { runPerformanceAudit } from './lighthouse';
 import { io } from '../../socket';
 import { updateJobStatus, getJobStatus, persistAudit } from '../../store';
 import { prisma } from '../../config/db';
+import * as fs from 'fs';
 
 // ───────────────────────────────────────────────
 // Helpers
@@ -169,9 +169,10 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         io.to(jobId).emit(`job-${jobId}-step`, { step: 'initializing' });
         const browser = await puppeteer.launch({
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
         });
 
+        io.to(jobId).emit(`job-${jobId}-progress`, { crawled: 0, text: 'Browser engine ready. Starting crawl...' });
 
         let pagesCrawled = 0;
 
@@ -202,10 +203,11 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
 
             try {
                 const page = await browser.newPage();
-                // Use networkidle2 so JS frameworks (Next.js/React) fully hydrate
-                // before we capture and analyse the DOM. Without this, client-rendered
-                // pages (like /login, /register) look empty and produce false positives.
-                await page.goto(currentUrl, { waitUntil: 'networkidle2', timeout: 20000 });
+                // Set a realistic User Agent to avoid being blocked as a bot
+                await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36');
+                
+                // Increased timeout and added 'load' to waitUntil for better reliability
+                await page.goto(currentUrl, { waitUntil: ['networkidle2', 'load'], timeout: 35000 });
                 const html = await page.content();
 
                 const $ = cheerio.load(html);
@@ -221,13 +223,11 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
                 // Domain-level audits only on the homepage (first page)
                 if (pagesCrawled === 1) {
                     io.to(jobId).emit(`job-${jobId}-step`, { step: 'analyzing-performance' });
-                    io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Domain-level Technical & Security checks...` });
+                    io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Domain-level Technical checks...` });
 
                     const techIssues = await checkTechnicalSeo(startUrl);
-                    const securityIssues = await checkSecurityHeaders(startUrl);
                     techIssues.forEach(i => i.location = `Domain (${baseHostname})`);
-                    securityIssues.forEach(i => i.location = `Domain (${baseHostname})`);
-                    allIssues.push(...techIssues, ...securityIssues);
+                    allIssues.push(...techIssues);
 
                     io.to(jobId).emit(`job-${jobId}-progress`, { crawled: pagesCrawled, text: `Running Performance audit on ${normCurrent}` });
                     const perfResults = await runPerformanceAudit(currentUrl);
@@ -304,6 +304,12 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         finalScore -= criticals * 5;
         finalScore -= warnings * 1;
         finalScore = Math.max(0, finalScore);
+
+        // DEBUG LOGGING (VER 2.1 - MANUAL SEARCH)
+        const logPath = '/media/WEBDEV/SEO-TOOL-PROJECT/backend/audit_issues_debug.log';
+        fs.appendFileSync(logPath, `\n\n--- Job ${jobId} (Score: ${finalScore}) [VER 2.1] ---\n`);
+        fs.appendFileSync(logPath, `Criticals: ${criticals}, Warnings: ${warnings}\n`);
+        fs.appendFileSync(logPath, JSON.stringify(allIssues, null, 2));
 
         const status = await getJobStatus(jobId);
         const finalResults = {

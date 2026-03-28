@@ -30,7 +30,7 @@ export const checkHeadings = ($: cheerio.CheerioAPI) => {
     const headingElements = $('h1, h2, h3, h4, h5, h6');
     
     headingElements.each((_, el) => {
-        const level = parseInt(el.tagName.replace('h', ''), 10);
+        const level = parseInt(el.tagName.toLowerCase().replace('h', ''), 10);
         const text = $(el).text().trim();
 
         // Empty heading

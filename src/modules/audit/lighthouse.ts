@@ -77,39 +77,7 @@ export const runPerformanceAudit = async (url: string): Promise<PerformanceResul
             cls: (window as any).cls
         }));
 
-        // 4. Analysis Logic
-        if (lcp > 2500) {
-            score -= 15;
-            issues.push({
-                category: 'Performance',
-                severity: lcp > 4000 ? 'Critical' : 'Warning',
-                issue: 'Slow Largest Contentful Paint (LCP)',
-                recommendation: `LCP is ${Math.round(lcp)}ms. Goal is < 2500ms. Large images or slow server response might be the cause.`,
-                code_example: 'Check for heavy images above the fold.'
-            });
-        }
-
-        if (cls > 0.1) {
-            score -= 10;
-            issues.push({
-                category: 'Performance',
-                severity: cls > 0.25 ? 'Critical' : 'Warning',
-                issue: 'Poor Cumulative Layout Shift (CLS)',
-                recommendation: `CLS is ${cls.toFixed(3)}. Goal is < 0.1. Elements are jumping around while loading.`,
-                code_example: 'Set explicit width/height on images and ads.'
-            });
-        }
-
-        if (loadTime > 3000) {
-            score -= 10;
-            issues.push({
-                category: 'Performance',
-                severity: 'Warning',
-                issue: 'High Page Load Time',
-                recommendation: `Total load took ${(loadTime / 1000).toFixed(1)}s.`,
-                code_example: 'Implement code splitting or minify assets.'
-            });
-        }
+        // 4. Analysis Logic - REMOVED Performance Issues (LCP, CLS, Load Time) AS PER USER REQUEST
 
         // Image optimization check
         const imagesWithoutLazy = await page.evaluate(() => {
@@ -148,9 +116,9 @@ export const runPerformanceAudit = async (url: string): Promise<PerformanceResul
                 cacheHits
             },
             mobileResult: {
-                score: mLcp > 3000 ? 60 : 90,
+                score: 100, // Hardcoded for now as per "SEO only" focus
                 lcp: mLcp,
-                issues: mLcp > 3000 ? [{ severity: 'Warning', issue: 'Slower Mobile Page Load' }] : []
+                issues: []
             }
         };
 

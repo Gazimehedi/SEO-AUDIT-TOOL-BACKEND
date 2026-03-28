@@ -40,13 +40,18 @@ export const checkBrokenLinks = async (baseUrl: string, $: import('cheerio').Che
         }
     }
 
-    const linksToCheck = links.slice(0, 15); // limit heavily for speed
+    const linksToCheck = links.slice(0, 30); // Increased from 15 for better coverage
 
     for (const link of linksToCheck) {
         try {
             // Check for broken links and redirect chains
             // Using Node 18+ native fetch. We set redirect: 'manual' to catch 301/302s.
-            const response = await fetch(link.href, { method: 'HEAD', redirect: 'manual' }).catch(() => null);
+            let response = await fetch(link.href, { method: 'HEAD', redirect: 'manual' }).catch(() => null);
+
+            // Fallback to GET if HEAD is forbidden or not allowed (many servers block it)
+            if (response && [403, 405, 500, 501].includes(response.status)) {
+                response = await fetch(link.href, { method: 'GET', redirect: 'manual' }).catch(() => null);
+            }
 
             const statusCode = response ? response.status : 0;
 

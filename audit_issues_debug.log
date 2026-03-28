@@ -1,0 +1,1234 @@
+
+
+--- Job e2f3df4c-bf60-473f-97c4-2f25a2d1c336 (Score: 24) ---
+Criticals: 10, Warnings: 26
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/english-customer-service-representative-f2Ep\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fenglish-customer-service-representative-f2Ep",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://www.facebook.com/profile.php?id=61581833039191\">Facebook</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.facebook.com/people/Snd-%D8%B3%D9%86%D8%AF/61581833039191/",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/outdoor-sales-representative-nTAA\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Foutdoor-sales-representative-nTAA",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/senior-digital-marketing-qW20\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsenior-digital-marketing-qW20",
+    "pageUrl": "https://wastetak.com/job/senior-digital-marketing-qW20"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/snd"
+  }
+]
+
+--- Job 53393ad8-a66a-474c-b4cd-35e79e5eb886 (Score: 74) [VER 2.1] ---
+Criticals: 3, Warnings: 11
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/english-customer-service-representative-f2Ep\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fenglish-customer-service-representative-f2Ep",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://www.facebook.com/profile.php?id=61581833039191\">Facebook</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.facebook.com/people/Snd-%D8%B3%D9%86%D8%AF/61581833039191/",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/outdoor-sales-representative-nTAA\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Foutdoor-sales-representative-nTAA",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/senior-digital-marketing-qW20\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsenior-digital-marketing-qW20",
+    "pageUrl": "https://wastetak.com/job/senior-digital-marketing-qW20"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://linkedin.com/company/bensolimanbrand/\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/company/bensolimanbrand/",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (404)",
+    "location": "<a href=\"https://www.facebook.com/BenSolimanBrand/directory_intro%20ig\">Facebook</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/retail-operation-manager-rtZ1\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fretail-operation-manager-rtZ1",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/social-media-account-manager-tDL0\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsocial-media-account-manager-tDL0",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/junior-procurement-specialist-vco3\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fjunior-procurement-specialist-vco3",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  }
+]
+
+--- Job b017661a-eefe-4b9e-b870-9cd116e9f632 (Score: 74) [VER 2.1] ---
+Criticals: 3, Warnings: 11
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/english-customer-service-representative-f2Ep\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fenglish-customer-service-representative-f2Ep",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://www.facebook.com/profile.php?id=61581833039191\">Facebook</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.facebook.com/people/Snd-%D8%B3%D9%86%D8%AF/61581833039191/",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/outdoor-sales-representative-nTAA\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Foutdoor-sales-representative-nTAA",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/senior-digital-marketing-qW20\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsenior-digital-marketing-qW20",
+    "pageUrl": "https://wastetak.com/job/senior-digital-marketing-qW20"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://linkedin.com/company/bensolimanbrand/\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/company/bensolimanbrand/",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (404)",
+    "location": "<a href=\"https://www.facebook.com/BenSolimanBrand/directory_intro%20ig\">Facebook</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/retail-operation-manager-rtZ1\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fretail-operation-manager-rtZ1",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/social-media-account-manager-tDL0\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsocial-media-account-manager-tDL0",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/junior-procurement-specialist-vco3\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fjunior-procurement-specialist-vco3",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  }
+]
+
+--- Job 72f45748-b485-410f-a202-673e119bd675 (Score: 74) [VER 2.1] ---
+Criticals: 3, Warnings: 11
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/english-customer-service-representative-f2Ep\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fenglish-customer-service-representative-f2Ep",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://www.facebook.com/profile.php?id=61581833039191\">Facebook</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.facebook.com/people/Snd-%D8%B3%D9%86%D8%AF/61581833039191/",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/outdoor-sales-representative-nTAA\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Foutdoor-sales-representative-nTAA",
+    "pageUrl": "https://wastetak.com/job/outdoor-sales-representative-nTAA"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/senior-digital-marketing-qW20\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsenior-digital-marketing-qW20",
+    "pageUrl": "https://wastetak.com/job/senior-digital-marketing-qW20"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (301)",
+    "location": "<a href=\"https://linkedin.com/company/bensolimanbrand/\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/company/bensolimanbrand/",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (404)",
+    "location": "<a href=\"https://www.facebook.com/BenSolimanBrand/directory_intro%20ig\">Facebook</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/retail-operation-manager-rtZ1\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fretail-operation-manager-rtZ1",
+    "pageUrl": "https://wastetak.com/job/retail-operation-manager-rtZ1"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/social-media-account-manager-tDL0\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fsocial-media-account-manager-tDL0",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"javascript:;\">Visit Website</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://www.linkedin.com/sharing/share-offsite/?url=https://wastetak.com/job/junior-procurement-specialist-vco3\">LinkedIn</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2FshareArticle%2F%3Furl%3Dhttps%3A%2F%2Fwastetak.com%2Fjob%2Fjunior-procurement-specialist-vco3",
+    "pageUrl": "https://wastetak.com/job/junior-procurement-specialist-vco3"
+  }
+]
+
+--- Job 58fa4713-8190-4db0-aeca-2560357d1df8 (Score: 69) [VER 2.1] ---
+Criticals: 4, Warnings: 11
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/bensoliman"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  }
+]
+
+--- Job 62158974-2e24-43ee-87be-a7a43dcf3e57 (Score: 92) [VER 2.1] ---
+Criticals: 1, Warnings: 3
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"https://wastetak.com/login\">Save Job</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  }
+]
+
+--- Job 99ce3809-f659-4fc2-9089-951cf4a9672e (Score: 83) [VER 2.1] ---
+Criticals: 2, Warnings: 7
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/headmost-KXICGI"
+  }
+]
+
+--- Job b49c9c16-514b-41c4-babb-8b2539855301 (Score: 70) [VER 2.1] ---
+Criticals: 4, Warnings: 10
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Critical",
+    "issue": "Missing meta description",
+    "location": "head > meta[name=\"description\"]",
+    "recommendation": "Add a meta description to improve click-through rates from search engines.",
+    "code_example": "<meta name=\"description\" content=\"A brief summary of your page (150-160 chars).\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Missing canonical URL",
+    "location": "head > link[rel=\"canonical\"]",
+    "recommendation": "Prevents duplicate content issues.",
+    "code_example": "<link rel=\"canonical\" href=\"https://example.com/your-url\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Technical SEO",
+    "severity": "Critical",
+    "issue": "Page blocked from indexing via meta robots",
+    "location": "head > meta[name=\"robots\"]",
+    "recommendation": "Remove \"noindex\" if you want search engines to rank this page.",
+    "code_example": "Remove <meta name=\"robots\" content=\"noindex\">",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing core Open Graph tags",
+    "location": "head > meta[property=\"og:...\"]",
+    "recommendation": "Add og:title and og:image to ensure links look good when shared on social media.",
+    "code_example": "<meta property=\"og:image\" content=\"https://example.com/image.jpg\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Social / Open Graph",
+    "severity": "Warning",
+    "issue": "Missing Twitter Card type",
+    "location": "head > meta[name=\"twitter:card\"]",
+    "recommendation": "Add a twitter:card meta tag to define the preview format on Twitter.",
+    "code_example": "<meta name=\"twitter:card\" content=\"summary_large_image\" />",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  },
+  {
+    "category": "Structured Data",
+    "severity": "Warning",
+    "issue": "No JSON-LD structured data found",
+    "location": "head or body",
+    "recommendation": "Add structured data (Schema.org) to help search engines understand the context of your page (e.g., Article, Product, Organization).",
+    "code_example": "<script type=\"application/ld+json\">{ \"@context\": \"https://schema.org\", \"@type\": \"Organization\", ... }</script>",
+    "pageUrl": "https://wastetak.com/employer/teleperformance"
+  }
+]
+
+--- Job 1e8404a6-7dde-433d-af89-31b965a90fb7 (Score: 92) [VER 2.1] ---
+Criticals: 1, Warnings: 3
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Critical",
+    "issue": "Broken link found (Timeout/DNS)",
+    "location": "<a href=\"https://wastetak.com/login\">Login</a>",
+    "recommendation": "Remove or update the dead link to prevent a poor user experience.",
+    "code_example": "Check where this link goes and fix the href attribute.",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  }
+]

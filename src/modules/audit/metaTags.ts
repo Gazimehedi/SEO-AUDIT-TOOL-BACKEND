@@ -3,8 +3,23 @@ import * as cheerio from 'cheerio';
 export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     const issues: any[] = [];
 
+    // Helper for case-insensitive meta attributes (Robust alternative to [attr="val" i])
+    const getMeta = (nameOrProperty: string) => {
+        let content = '';
+        $('meta').each((_, el) => {
+            const attrName = $(el).attr('name') || '';
+            const attrProp = $(el).attr('property') || '';
+            if (attrName.toLowerCase() === nameOrProperty.toLowerCase() || 
+                attrProp.toLowerCase() === nameOrProperty.toLowerCase()) {
+                content = $(el).attr('content') || '';
+                return false; // break
+            }
+        });
+        return content;
+    };
+
     // Lang Attribute Check
-    const lang = $('html').attr('lang');
+    const lang = $('html').attr('lang') || $('html').attr('xml:lang') || $('body').attr('lang');
     if (!lang) {
         issues.push({
             category: 'Meta & Basics',
@@ -16,8 +31,22 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
         });
     }
 
-    // Charset
-    const charset = $('meta[charset]').attr('charset');
+    // Charset robustness
+    let charset = $('meta[charset]').attr('charset');
+    if (!charset) {
+        // Fallback for http-equiv
+        $('meta').each((_, el) => {
+            const httpEquiv = $(el).attr('http-equiv') || '';
+            if (httpEquiv.toLowerCase() === 'content-type') {
+                const content = $(el).attr('content') || '';
+                if (content.toLowerCase().includes('charset=')) {
+                    charset = content.split(/charset=/i)[1];
+                    return false;
+                }
+            }
+        });
+    }
+
     if (!charset) {
         issues.push({
             category: 'Meta & Basics',
@@ -30,7 +59,8 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Title Check
-    const title = $('title').text();
+    const titleRaw = $('title').text() || '';
+    const title = titleRaw.trim();
     if (!title) {
         issues.push({
             category: 'Meta & Basics',
@@ -52,7 +82,7 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Meta Description
-    const description = $('meta[name="description"]').attr('content');
+    const description = getMeta('description').trim();
     if (!description) {
         issues.push({
             category: 'Meta & Basics',
@@ -74,7 +104,7 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Viewport
-    const viewport = $('meta[name="viewport"]').attr('content');
+    const viewport = getMeta('viewport');
     if (!viewport) {
         issues.push({
             category: 'Mobile & Layout',
@@ -87,7 +117,7 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Canonical
-    const canonical = $('link[rel="canonical"]').attr('href');
+    const canonical = $('link[rel="canonical"]').attr('href') || $('link[rel="Canonical"]').attr('href');
     if (!canonical) {
         issues.push({
             category: 'Meta & Basics',
@@ -100,7 +130,7 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Robots Meta Tag
-    const robots = $('meta[name="robots"]').attr('content')?.toLowerCase() || '';
+    const robots = getMeta('robots').toLowerCase();
     if (robots.includes('noindex')) {
         issues.push({
             category: 'Technical SEO',
@@ -113,8 +143,8 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Social Meta Tags (Open Graph)
-    const ogTitle = $('meta[property="og:title"]').attr('content');
-    const ogImage = $('meta[property="og:image"]').attr('content');
+    const ogTitle = getMeta('og:title');
+    const ogImage = getMeta('og:image');
     if (!ogTitle || !ogImage) {
         issues.push({
             category: 'Social / Open Graph',
@@ -127,7 +157,7 @@ export const checkMetaTags = ($: cheerio.CheerioAPI, html: string) => {
     }
 
     // Twitter Cards
-    const twitterCard = $('meta[name="twitter:card"]').attr('content');
+    const twitterCard = getMeta('twitter:card');
     if (!twitterCard) {
         issues.push({
             category: 'Social / Open Graph',

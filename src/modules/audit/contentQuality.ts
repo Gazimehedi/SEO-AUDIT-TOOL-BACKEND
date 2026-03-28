@@ -3,22 +3,10 @@ import * as cheerio from 'cheerio';
 export const checkContentQuality = ($: cheerio.CheerioAPI) => {
     const issues: any[] = [];
 
-    // Word Count (Thin Content)
+    // Word Count (Thin Content check removed as per user request)
     const bodyText = $('body').text();
-    // basic word extraction
     const words = bodyText.replace(/\s+/g, ' ').trim().split(' ');
     const wordCount = words.length;
-
-    if (wordCount < 300) {
-        issues.push({
-            category: 'Content Quality',
-            severity: 'Warning',
-            issue: `Thin Content: Page has low word count (~${wordCount} words)`,
-            location: '<body>',
-            recommendation: 'Pages generally need 300+ words of high-quality content to rank well for competitive terms.',
-            code_example: 'Expand page content with valuable information.'
-        });
-    }
 
     // Duplicate Title / H1
     const title = $('title').text().trim();
