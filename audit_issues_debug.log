@@ -1758,3 +1758,44 @@ Criticals (Unique): 0, Warnings (Unique): 3
     "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
   }
 ]
+
+--- Job 540fe6b2-3269-4be0-8513-496a6c444883 (Score: 97) [VER 2.3] ---
+Total Issues: 4, Unique Issues: 4
+Criticals (Unique): 0, Warnings (Unique): 3
+[
+  {
+    "category": "Technical SEO",
+    "severity": "Passed",
+    "issue": "Valid sitemap.xml found",
+    "location": "Domain (wastetak.com)",
+    "recommendation": "Search engines can use this sitemap to discover your pages faster.",
+    "code_example": ""
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (302)",
+    "location": "<a href=\"https://wastetak.com/company/jobs/create\">Post a Job</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://wastetak.com/login?redirect=https%3A%2F%2Fwastetak.com%2Fcompany%2Fjobs%2Fcreate",
+    "pageUrl": "https://wastetak.com"
+  },
+  {
+    "category": "Meta & Basics",
+    "severity": "Warning",
+    "issue": "Title length is not optimal",
+    "location": "head > title",
+    "recommendation": "Current length: 67. Optimal is 10-60 characters.",
+    "code_example": "<title>Your Descriptive Page Title (10-60 chars)</title>",
+    "pageUrl": "https://wastetak.com/job/english-customer-service-representative-f2Ep"
+  },
+  {
+    "category": "Links",
+    "severity": "Warning",
+    "issue": "Redirecting Link Found (307)",
+    "location": "<a href=\"https://www.linkedin.com/search/results/all/?keywords=%23maadi&origin=HASH_TAG_FROM_FEED\">#Maadi</a>",
+    "recommendation": "Linking directly to the final destination is slightly better for crawl efficiency.",
+    "code_example": "Update href to https://www.linkedin.com/uas/login?session_redirect=%2Fsearch%2Fresults%2Fall%2F%3Fkeywords%3D%2523maadi%26origin%3DHASH_TAG_FROM_FEED&skipRedirect=true",
+    "pageUrl": "https://wastetak.com/job/social-media-account-manager-tDL0"
+  }
+]

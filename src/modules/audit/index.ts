@@ -325,11 +325,15 @@ export const runFullWebsiteAudit = async (startUrl: string, jobId: string, userI
         finalScore = Math.max(0, finalScore);
 
         // DEBUG LOGGING (VER 2.3 - DEDUPLICATED SCORE)
-        const logPath = '/media/WEBDEV/SEO-TOOL-PROJECT/backend/audit_issues_debug.log';
-        fs.appendFileSync(logPath, `\n\n--- Job ${jobId} (Score: ${finalScore}) [VER 2.3] ---\n`);
-        fs.appendFileSync(logPath, `Total Issues: ${allIssues.length}, Unique Issues: ${uniqueIssues.length}\n`);
-        fs.appendFileSync(logPath, `Criticals (Unique): ${criticals}, Warnings (Unique): ${warnings}\n`);
-        fs.appendFileSync(logPath, JSON.stringify(allIssues, null, 2));
+        try {
+            const logPath = 'audit_issues_debug.log'; // Uses current working directory
+            fs.appendFileSync(logPath, `\n\n--- Job ${jobId} (Score: ${finalScore}) [VER 2.3] ---\n`);
+            fs.appendFileSync(logPath, `Total Issues: ${allIssues.length}, Unique Issues: ${uniqueIssues.length}\n`);
+            fs.appendFileSync(logPath, `Criticals (Unique): ${criticals}, Warnings (Unique): ${warnings}\n`);
+            fs.appendFileSync(logPath, JSON.stringify(allIssues, null, 2));
+        } catch (logErr) {
+            console.error('Failed to write to debug log:', logErr);
+        }
 
         const status = await getJobStatus(jobId);
         const finalResults = {
